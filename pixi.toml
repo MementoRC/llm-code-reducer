@@ -1,0 +1,23 @@
+[project]
+name = "mcp-server-code-reducer"
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-64", "win-64"]
+
+[dependencies]
+python = ">=3.10"
+mcp = ">=1.0.0"
+pydantic = ">=2.0.0"
+astor = ">=0.8.1"
+
+# [feature.dev.dependencies]
+# pytest = ">=8.3.3"
+# ruff = ">=0.8.1"
+
+# Define scripts
+[tasks]
+test = "PYTHONPATH=. pytest test -v"
+lint = "ruff check src test"
+format = "ruff format src test"
+typecheck = "pyright src test"
+# check = ["format", "lint", "typecheck", "test"]
+serve = "PYTHONPATH=. python -m mcp_server_code_reducer"
